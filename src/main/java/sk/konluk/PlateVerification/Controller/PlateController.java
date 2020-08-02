@@ -19,7 +19,7 @@ public class PlateController {
 
     @PostMapping()
     public ResponseEntity addPlate(@RequestBody CarPlate carPlate) {
-        Integer id = null;
+        Integer id = null;//
 
         try {
             id = plateService.addPlate(carPlate);
