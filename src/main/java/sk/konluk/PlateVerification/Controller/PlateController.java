@@ -4,8 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import sk.konluk.PlateVerification.Domain.CarPlate;
-import sk.konluk.PlateVerification.Service.PlateService;
-import sk.konluk.PlateVerification.Service.PlateServiceImpl;
+import sk.konluk.PlateVerification.Service.interfaces.PlateService;
 
 @RestController
 @RequestMapping("/plate")
@@ -17,10 +16,16 @@ public class PlateController {
         this.plateService = plateService;
     }
 
+
+    @GetMapping()
+    public ResponseEntity getPlates() {
+        return new ResponseEntity<>(plateService.getPlates(), HttpStatus.OK);
+    }
+
+
     @PostMapping()
     public ResponseEntity addPlate(@RequestBody CarPlate carPlate) {
-        Integer id = null;//
-
+        Integer id = null;
         try {
             id = plateService.addPlate(carPlate);
         } catch (Exception e) {

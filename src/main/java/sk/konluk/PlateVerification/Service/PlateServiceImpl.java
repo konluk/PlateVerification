@@ -3,6 +3,7 @@ package sk.konluk.PlateVerification.Service;
 import org.springframework.stereotype.Service;
 import sk.konluk.PlateVerification.Domain.CarPlate;
 import sk.konluk.PlateVerification.Domain.CarPlateRepository;
+import sk.konluk.PlateVerification.Service.interfaces.PlateService;
 
 @Service
 public class PlateServiceImpl implements PlateService {
@@ -11,6 +12,11 @@ public class PlateServiceImpl implements PlateService {
 
     public PlateServiceImpl(CarPlateRepository carPlateRepository) {
         this.carPlateRepository = carPlateRepository;
+    }
+
+    @Override
+    public Iterable<CarPlate> getPlates() {
+        return carPlateRepository.findAll();
     }
 
     @Override
