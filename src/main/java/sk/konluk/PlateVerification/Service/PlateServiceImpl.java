@@ -27,6 +27,8 @@ public class PlateServiceImpl implements PlateService {
 
         if(carPlateRepository.findByPlate(carPlate.getPlate()) != null) throw new Exception("SPZ sa uz nachadza v databaze");
 
+        carPlate.setSearches(0);
+
         return carPlateRepository.save(carPlate).getId();
     }
 

@@ -14,7 +14,21 @@ public class CarPlate {
 
     private String email;
 
+    private Integer searches;
+
     public CarPlate() {
+    }
+
+    public void addSearches(){
+        this.searches++;
+    }
+
+    public Integer getSearches() {
+        return searches;
+    }
+
+    public void setSearches(Integer searches) {
+        this.searches = searches;
     }
 
     public int getId() {

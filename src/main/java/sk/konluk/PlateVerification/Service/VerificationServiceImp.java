@@ -1,6 +1,7 @@
 package sk.konluk.PlateVerification.Service;
 
 import org.springframework.stereotype.Service;
+import sk.konluk.PlateVerification.Domain.CarPlate;
 import sk.konluk.PlateVerification.Domain.CarPlateRepository;
 import sk.konluk.PlateVerification.Service.interfaces.VerificationService;
 
@@ -16,9 +17,13 @@ public class VerificationServiceImp implements VerificationService {
     @Override
     public boolean verficiate(String plate) {
 
-        if(carPlateRepository.findByPlate(plate) == null) {
+        CarPlate carPlate = carPlateRepository.findByPlate(plate);
+
+        if(carPlate == null) {
             return false;
         }else{
+            carPlate.addSearches();
+            carPlateRepository.save(carPlate);
             return true;
         }
     }
