@@ -6,12 +6,6 @@ import java.util.List;
 
 public interface CarPlateRepository extends CrudRepository<CarPlate, Integer> {
 
-
-
     CarPlate findByPlate(String plate);
-
-
-
-
 
 }
